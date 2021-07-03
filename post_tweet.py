@@ -5,6 +5,7 @@ import re
 from glob import iglob
 import tweepy
 
+import collect_tweets
 import credential
 
 CK = credential.CONSUMER_KEY
@@ -78,6 +79,8 @@ def post_tweet(text: str):
 
 
 if __name__ == '__main__':
+    collect_tweets.main()
+
     sentences = generate_sentence(10, '/tmp/hiroyuki.txt')
 
     [print(sentence) for sentence in sentences]
