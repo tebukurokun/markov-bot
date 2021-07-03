@@ -1,0 +1,8 @@
+venv
+
+.env
+
+hiroyuki.txt
+.idea/
+
+.DS_Store
