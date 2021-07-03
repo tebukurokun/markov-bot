@@ -59,15 +59,20 @@ def get_tweets_by_user(user_id: str):
 
         tweet_list.append(text)
 
+        print(text)
+
     return tweet_list
 
 
 def main():
+    print('collect tweet beginning…')
     tweets = get_tweets_by_user('hirox246')
 
     with open("hiroyuki.txt", "wt") as fout:
         for tweet in tweets:
             print(tweet, file=fout)
+
+    print('collect tweet ending…')
 
 
 if __name__ == "__main__":
