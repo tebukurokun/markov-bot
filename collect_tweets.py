@@ -68,7 +68,7 @@ def main():
     print('collect tweet beginning…')
     tweets = get_tweets_by_user('hirox246')
 
-    with open("hiroyuki.txt", "wt") as fout:
+    with open("/tmp/hiroyuki.txt", "wt") as fout:
         for tweet in tweets:
             print(tweet, file=fout)
 

@@ -78,7 +78,7 @@ def post_tweet(text: str):
 
 
 if __name__ == '__main__':
-    sentences = generate_sentence(10, './hiroyuki.txt')
+    sentences = generate_sentence(10, '/tmp/hiroyuki.txt')
 
     [print(sentence) for sentence in sentences]
 
