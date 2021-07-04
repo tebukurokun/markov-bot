@@ -64,11 +64,11 @@ def get_tweets_by_user(user_id: str):
     return tweet_list
 
 
-def main():
+def collect_tweets(user_id: str):
     print('collect tweet beginning…')
-    tweets = get_tweets_by_user('hirox246')
+    tweets = get_tweets_by_user(user_id)
 
-    with open("/tmp/hiroyuki.txt", "wt") as fout:
+    with open("/tmp/tweets.txt", "wt") as fout:
         for tweet in tweets:
             print(tweet, file=fout)
 
@@ -76,4 +76,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    collect_tweets('hirox246')
