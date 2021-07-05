@@ -50,7 +50,7 @@ def generate_sentence(exec_times: int, *files) -> list[str]:
 
     text_model = markovify.NewlineText(splitted_text, state_size=2)  # markovify.Text()ではない
 
-    markov_sentences = [text_model.make_short_sentence(200, min_chars=160, tries=500).replace(" ", "") for i in
+    markov_sentences = [text_model.make_short_sentence(200, min_chars=160, tries=1000).replace(" ", "") for i in
                         range(exec_times)]
 
     markov_sentences.sort(reverse=True, key=len)
@@ -63,4 +63,4 @@ def generate_sentence(exec_times: int, *files) -> list[str]:
 
 
 if __name__ == "__main__":
-    generate_sentence(10, '/tmp/tweets.txt')
+    generate_sentence(10, './tweets.txt')
