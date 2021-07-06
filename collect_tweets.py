@@ -3,6 +3,8 @@
 import re
 import tweepy
 
+from text_repository import TextRepository
+import config
 import credential
 
 CK = credential.CONSUMER_KEY
@@ -64,16 +66,30 @@ def get_tweets_by_user(user_id: str):
     return tweet_list
 
 
+def save_tweets(key: str, tweets: list[str]):
+    """
+    save tweet data.
+    :param key: str
+    :param tweets: list[str]
+    :return: Any
+    """
+    text_repository = TextRepository()
+
+    tweets_text = "\n".join(tweets)
+
+    result = text_repository.update_text(key, tweets_text)
+
+    return result
+
+
 def collect_tweets(user_id: str):
     print('collect tweet beginning…')
     tweets = get_tweets_by_user(user_id)
 
-    with open("/tmp/tweets.txt", "wt") as fout:
-        for tweet in tweets:
-            print(tweet, file=fout)
+    save_tweets(user_id, tweets)
 
     print('collect tweet ending…')
 
 
 if __name__ == "__main__":
-    collect_tweets('hirox246')
+    collect_tweets(config.TWITTER_ID)

@@ -1,1 +1,1 @@
-web: python main.py
+web: python collect_tweets.py

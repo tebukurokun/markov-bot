@@ -1,14 +1,14 @@
-from collect_tweets import collect_tweets
+import config
 from generate_text import generate_sentence
 from post_tweet import post_tweet
+
+TWITTER_ID = config.TWITTER_ID
 
 
 def main():
     print('*** start ***')
 
-    collect_tweets('hirox246')
-
-    sentences = generate_sentence(10, '/tmp/tweets.txt')
+    sentences = generate_sentence(10, TWITTER_ID)
 
     [print(sentence) for sentence in sentences]
 

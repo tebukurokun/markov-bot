@@ -3,6 +3,8 @@ from sudachipy import dictionary
 import markovify
 import re
 from glob import iglob
+from text_repository import TextRepository
+import config
 
 
 def load_file(file):
@@ -38,13 +40,12 @@ def split_input_files(text: str):
     return _splitted_text
 
 
-def generate_sentence(exec_times: int, *files) -> list[str]:
+def generate_sentence(exec_times: int, key: str) -> list[str]:
     print('generate_sentence beginning…')
 
-    input_text = ''
+    text_repository = TextRepository()
 
-    for file in files:
-        input_text += load_file(file)
+    input_text = text_repository.get_text(key)
 
     splitted_text = split_input_files(input_text)
 
@@ -63,4 +64,4 @@ def generate_sentence(exec_times: int, *files) -> list[str]:
 
 
 if __name__ == "__main__":
-    generate_sentence(10, './tweets.txt')
+    generate_sentence(10, config.TWITTER_ID)
