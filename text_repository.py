@@ -11,7 +11,8 @@ class TextRepository:
 
     def __init__(self):
         try:
-            self.redis = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=0, password=REDIS_PASSWORD)
+            # self.redis = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=0, password=REDIS_PASSWORD)
+            self.redis = redis.from_url(redis_config.REDIS_URL)
         except Exception as e:
             print(e)
 
@@ -36,13 +37,3 @@ class TextRepository:
             self.redis.close()
         except Exception as e:
             print(e)
-
-
-if __name__ == "__main__":
-    redis_manager = TextRepository()
-
-    redis_manager.update_text("hiroyuki", "bbbbbb")
-
-    t = redis_manager.get_text('hirox246')
-
-    print(t)
