@@ -47,6 +47,8 @@ def generate_sentence(exec_times: int, key: str) -> list[str]:
 
     input_text = text_repository.get_text(key)
 
+    del text_repository
+
     splitted_text = split_input_files(input_text)
 
     text_model = markovify.NewlineText(splitted_text, state_size=2)  # markovify.Text()ではない

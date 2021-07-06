@@ -79,6 +79,8 @@ def save_tweets(key: str, tweets: list[str]):
 
     result = text_repository.update_text(key, tweets_text)
 
+    del text_repository
+
     return result
 
 
